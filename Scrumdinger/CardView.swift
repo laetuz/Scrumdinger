@@ -15,12 +15,16 @@ struct CardView: View {
                 .font(.headline)
             Spacer()
             HStack{
-                Label("\(scrum.attendees.count)", systemImage: "person.3")
+                let countLabel = scrum.attendees.count
+                let minLengthLabel = scrum.lengthInMinutes
+                Label("\(countLabel)", systemImage: "person.3").accessibilityLabel("\(countLabel) atendees")
                 Spacer()
-                Label("\(scrum.lengthInMinutes)", systemImage: "clock")
-            }
+                Label("\(minLengthLabel)", systemImage: "clock").accessibilityLabel("\(minLengthLabel) minute meeting")
+               //     .labelStyle(.trailingIcon)
+            }.font(.caption)
         }
-
+        .padding()
+       // .foregroundColor(scrum.theme.accentColor)
     }
 }
 
